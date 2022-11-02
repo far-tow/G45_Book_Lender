@@ -17,29 +17,30 @@ public class Book {
     //Constructor
 
     public Book() {
-        this.available = false;
+        this.available = true;
     }
 
     public Book(String title, String author) {
+        this();
         this.title = title;
         this.author = author;
-
-
-    }
-
-    public Book(String title, String author, boolean available) {
-        this.title = title;
-        this.author = author;
-        this.available = available;
-
     }
 
 
-    //Method
+    public Book(String title, String author, Person borrower) {
+        this(title, author);
+        setBorrower(borrower);
+    }
+//Method
 
     //To show Book information
     public String getBookInformation() {
-        return "Title: " + title + " Author: " + author + " Availability: " + available;
+        if (borrower != null) {
+            return "Title: " + title + " Author: " + author +" ## This book is borrowed by: " + getBorrowerInformation() + " ##";
+        } else {
+            return "Title: " + title + " Author: " + author + " Availability: " + getBorrowerInformation();
+        }
+        //return "Title: " + title + " Author: " + author + " Availability: " + available;
     }
 
     //To show Who has this book now (if there is any)
@@ -83,5 +84,8 @@ public class Book {
 
     public void setBorrower(Person borrower) {
         this.borrower = borrower;
+        this.setAvailable(false);
     }
+
+
 }
