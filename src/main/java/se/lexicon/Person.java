@@ -1,3 +1,8 @@
+/******************************************************************************
+ * Copyright (c) Farhad Towfighian 2022.                                      *
+ * https://github.com/far-tow                                                 *
+ ******************************************************************************/
+
 package se.lexicon;
 
 import java.awt.print.Book;
@@ -23,7 +28,7 @@ public class Person {
     //Method
     // To show Person information
     public String getPersonInformation(){
-        return ">Person id: " + personId + " First Name: " + firstName + " Last Name: " + lastName;
+        return "Person id: " + personId + " First Name: " + firstName + " Last Name: " + lastName;
     }
 
 

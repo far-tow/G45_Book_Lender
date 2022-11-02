@@ -1,3 +1,8 @@
+/******************************************************************************
+ * Copyright (c) Farhad Towfighian 2022.                                      *
+ * https://github.com/far-tow                                                 *
+ ******************************************************************************/
+
 package se.lexicon;
 
 public class Book {
@@ -6,27 +11,26 @@ public class Book {
     private String title;
     private String author;
     private boolean available;
-
-    // To create a Borrower for the books. DON'T FORGET TO CREATE GETTER & SETTER FOR THIS!!
     private Person borrower;
 
 
     //Constructor
 
-    public Book(){
+    public Book() {
         this.available = false;
     }
+
     public Book(String title, String author) {
-        setTitle(title);
-        setAuthor(author);
-        setAvailable(available);
+        this.title = title;
+        this.author = author;
+
 
     }
 
     public Book(String title, String author, boolean available) {
-        setTitle(title);
-        setAuthor(author);
-        setAvailable(available);
+        this.title = title;
+        this.author = author;
+        this.available = available;
 
     }
 
@@ -34,16 +38,15 @@ public class Book {
     //Method
 
     //To show Book information
-    public String getBookInformation(){
+    public String getBookInformation() {
         return "Title: " + title + " Author: " + author + " Availability: " + available;
     }
 
     //To show Who has this book now (if there is any)
-    public String getBorrowerInformation (){
-        if (borrower != null){
-            return borrower.getPersonInformation(); //TODO: Make a method for personInformation in Person.class
-            }
-        else {
+    public String getBorrowerInformation() {
+        if (borrower != null) {
+            return borrower.getPersonInformation();
+        } else {
             return "Available";
         }
     }
