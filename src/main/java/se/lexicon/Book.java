@@ -1,7 +1,3 @@
-/******************************************************************************
- * Copyright (c) Farhad Towfighian 2022.                                      *
- * https://github.com/far-tow                                                 *
- ******************************************************************************/
 
 package se.lexicon;
 
@@ -36,7 +32,7 @@ public class Book {
     //To show Book information
     public String getBookInformation() {
         if (borrower != null) {
-            return "Title: " + title + " Author: " + author +" ## This book is borrowed by: " + getBorrowerInformation() + " ##";
+            return "Title: " + title + " Author: " + author +" ## Borrowed by: " + getBorrowerInformation() + " ##";
         } else {
             return "Title: " + title + " Author: " + author + " Availability: " + getBorrowerInformation();
         }
