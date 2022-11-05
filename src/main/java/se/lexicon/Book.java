@@ -1,9 +1,12 @@
 
 package se.lexicon;
 
+import java.util.UUID;
+
 public class Book {
 
     //Field
+    private final String id;
     private String title;
     private String author;
     private boolean available;
@@ -11,8 +14,8 @@ public class Book {
 
 
     //Constructor
-
-    public Book() {
+    private Book() {
+        this.id = UUID.randomUUID().toString();
         this.available = true;
     }
 
@@ -50,6 +53,9 @@ public class Book {
 
 
     // Getter & Setter
+    public String getId() {
+        return id;
+    }
     public String getTitle() {
         return title;
     }

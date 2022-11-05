@@ -1,27 +1,34 @@
 package se.lexicon;
 
-public class App 
-{
-    public static void main( String[] args ) {
-        Book java = new Book("Java for beginners", "Mehrdad Javan");
-        Book ledarSkap = new Book("Ledarskap i offentlighet", "Jörgen Rundgren");
+import java.util.Arrays;
 
-        Person erik = new Person(12333, "Erik", "Svensson");
-        erik.loanBook(java);
-        erik.loanBook(ledarSkap);
-        erik.showBorrowedBooks();
+public class App {
+    public static void main(String[] args) {
+        Book oca = new Book("OCA - Oracle Certified Associate Java SE 8 Programmer", "Scott Selikoff");
+        Book ocp = new Book("OCP - Oracle Certified Professional Java SE 8 Programmer", "Scott Selikoff, Jeanne Boyarsky");
+
+        Person person1 = new Person("Test1", "Test1");
+        person1.loanBook(ocp);
+        person1.loanBook(oca);
+
+        System.out.println("BOOK INFORMATION");
+        System.out.println(oca.getBookInformation());
+        System.out.println(ocp.getBookInformation());
+        System.out.println("______________________________");
+
+        System.out.println("PERSON INFORMATION");
+        System.out.println(person1.getPersonInformation());
+        System.out.println("______________________________");
+
+        System.out.println("RETURN OCP BOOK");
+        person1.returnBook(ocp);
+        System.out.println("______________________________");
+
+        System.out.println("PERSON INFORMATION");
+        System.out.println(person1.getPersonInformation());
+        System.out.println(person1.showBorrowedBooks());
 
 
-        System.out.println(java.getBorrowerInformation());
 
-        Person karin = new Person(111111, "Karin", "Person");
-       // karin.loanBook(java);
-
-
-
-
-        //System.out.println(erik.getPersonInformation());
-        //System.out.println(karin.getPersonInformation());
-       // System.out.println(java.getBookInformation() + "\n Borrower: " + java.getBorrowerInformation());
     }
 }

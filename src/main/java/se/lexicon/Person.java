@@ -12,8 +12,12 @@ public class Person {
 
 
     //Constructor
-    public Person(int personId, String firstName, String lastName) {
-        this.personId = personId;
+    private Person() {
+        this.personId = PersonSequencer.getNextId();
+    }
+
+    public Person(String firstName, String lastName) {
+        this();
         this.firstName = firstName;
         this.lastName = lastName;
     }
@@ -22,10 +26,13 @@ public class Person {
     //Method
     // To show Person information
     public String getPersonInformation() {
-        return "Person id: " + personId + " First Name: " + firstName + " Last Name: " + lastName;
+        return "Person{ personId=" + personId + ", firstName='" + firstName + ", lastName='" + lastName + ",number of borrowedBooks=" + borrowedBooks.length + '}';
     }
 
-    // TODO: put in add array method
+    /*public String getPersonInformation() {
+        return "Person id: " + personId + " First Name: " + firstName + " Last Name: " + lastName;
+    }*/
+
 
     public void loanBook(Book borrowedBook) {
         if (borrowedBooks == null) borrowedBooks = new Book[0]; //Control if borrowedBooks (array) is empty (null) then make a new array.
@@ -37,23 +44,38 @@ public class Person {
 
             borrowedBooks = newArrayBooks;
         } else {
-            System.out.println("Book is not available!");
+            throw new IllegalArgumentException("Book was not available");
         }
 
     }
+    public void returnBook(Book book) {
+        if (book == null) throw new IllegalArgumentException("Book was null");
 
-    public void showBorrowedBooks() {
-       // todo: display all borrowed books for loop
-
-       for (int i = 0 ; i < borrowedBooks.length; i++)
-
-       System.out.println(borrowedBooks[i]);
-
-        //System.out.println(Arrays.toString(borrowedBooks));
-
-       System.out.println(borrowedBooks.length);
-
+        Book[] newArray = new Book[borrowedBooks.length - 1];
+        int counter = 0;
+        for (Book elementArray : borrowedBooks) {
+            if (elementArray.getId().equals(book.getId())) {
+                book.setBorrower(null);
+                continue;
+            }
+            newArray[counter++] = elementArray;
+        }
+        borrowedBooks = newArray;
     }
+
+    public String showBorrowedBooks() {
+        String stringBuilder = "";
+        if (borrowedBooks != null) {
+            for (Book book : borrowedBooks) {
+                System.out.println(book.getBookInformation());
+            }
+            return stringBuilder.toString();
+        }
+        return null;
+    }
+
+
+
 
 
     //Getter & Setter
@@ -71,14 +93,18 @@ public class Person {
     }
 
     public void setFirstName(String firstName) {
+        if (firstName == null) throw new IllegalArgumentException("firstName was null");
         this.firstName = firstName;
     }
+
+
 
     public String getLastName() {
         return lastName;
     }
 
     public void setLastName(String lastName) {
+        if (lastName == null) throw new IllegalArgumentException("lastName was null");
         this.lastName = lastName;
     }
 
