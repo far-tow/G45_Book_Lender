@@ -1,4 +1,4 @@
-# OOP Exercise
+# BookLender Exercise
 
 The simplified class diagram is part of a much larger program is shown in Figure 1 should be
 implemented.  
